@@ -9,7 +9,7 @@ import { cn } from '~/utils';
 
 interface PublicSharingToggleProps {
   isPublic: boolean;
-  publicRole: AccessRoleIds;
+  publicRole?: AccessRoleIds;
   onPublicToggle: (isPublic: boolean) => void;
   onPublicRoleChange: (role: AccessRoleIds) => void;
   resourceType?: ResourceType;

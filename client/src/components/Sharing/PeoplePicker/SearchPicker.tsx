@@ -14,7 +14,7 @@ type SearchPickerProps<TOption extends { key: string }> = {
   onPick: (pickedOption: TOption) => void;
   placeholder?: string;
   inputClassName?: string;
-  label: string;
+  label?: string;
   resetValueOnHide?: boolean;
   isSmallScreen?: boolean;
   isLoading?: boolean;

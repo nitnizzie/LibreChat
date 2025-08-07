@@ -8,7 +8,6 @@ import { useInfiniteScroll } from '~/hooks/useInfiniteScroll';
 import { useHasData } from './SmartLoader';
 import ErrorDisplay from './ErrorDisplay';
 import AgentCard from './AgentCard';
-import { cn } from '~/utils';
 
 interface AgentGridProps {
   category: string; // Currently selected category

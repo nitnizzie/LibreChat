@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import type { TPrincipal, PrincipalSearchParams } from 'librechat-data-provider';
+import type { TPrincipal, PrincipalType, PrincipalSearchParams } from 'librechat-data-provider';
 import { useSearchPrincipalsQuery } from 'librechat-data-provider/react-query';
 import PeoplePickerSearchItem from './PeoplePickerSearchItem';
 import { SearchPicker } from './SearchPicker';
@@ -9,8 +9,8 @@ interface UnifiedPeopleSearchProps {
   onAddPeople: (principals: TPrincipal[]) => void;
   placeholder?: string;
   className?: string;
-  typeFilter?: 'user' | 'group' | null;
-  excludeIds?: string[];
+  typeFilter?: PrincipalType.USER | PrincipalType.GROUP | PrincipalType.ROLE | null;
+  excludeIds?: (string | undefined)[];
 }
 
 export default function UnifiedPeopleSearch({

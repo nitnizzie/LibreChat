@@ -125,13 +125,6 @@ export default function GenericGrantAccessDialog({
     setHasChanges(true);
   };
 
-  // Handler for revoking all sharing
-  const handleRevokeAll = () => {
-    setAllShares([]);
-    setIsPublic(false);
-    setHasChanges(true);
-  };
-
   // Handler for public access toggle
   const handlePublicToggle = (isPublicValue: boolean) => {
     setIsPublic(isPublicValue);

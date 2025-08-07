@@ -10,6 +10,7 @@ import { cn, getRoleLocalizationKeys } from '~/utils';
 import { useLocalize } from '~/hooks';
 
 interface AccessRolesPickerProps {
+  id?: string;
   resourceType?: ResourceType;
   selectedRoleId?: AccessRoleIds;
   onRoleChange: (roleId: AccessRoleIds) => void;
@@ -17,6 +18,7 @@ interface AccessRolesPickerProps {
 }
 
 export default function AccessRolesPicker({
+  id,
   resourceType = ResourceType.AGENT,
   selectedRoleId = AccessRoleIds.AGENT_VIEWER,
   onRoleChange,
@@ -63,7 +65,7 @@ export default function AccessRolesPicker({
   });
 
   return (
-    <div className={className}>
+    <div className={className} id={id}>
       <DropdownPopup
         menuId="access-roles-menu"
         isOpen={isOpen}
