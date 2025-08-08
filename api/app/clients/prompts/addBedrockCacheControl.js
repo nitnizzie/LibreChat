@@ -1,6 +1,6 @@
 /**
  * Bedrock Converse API: Adds cache points to messages in the payload.
- * Bedrock uses cachePoint as a property of content objects, not as separate content objects.
+ * Bedrock requires `cachePoint` be a separate content block in the content array.
  * @param {Array<BaseMessage>} messages - The array of message objects.
  * @returns {Array<BaseMessage>} - The updated array of message objects with cache points added.
  */
@@ -16,28 +16,26 @@ function addBedrockCacheControl(messages) {
     const message = updatedMessages[i];
 
     if (typeof message.content === 'string') {
-      // system messages
       message.content = [
-        {
-          type: 'text',
-          text: message.content,
-          cachePoint: {
-            type: 'default',
-          },
-        },
+        { type: 'text', text: message.content },
+        { cachePoint: { type: 'default' } },
       ];
       messagesModified++;
+      continue;
     } else if (Array.isArray(message.content)) {
-      // user messages
+      let inserted = false;
       for (let j = message.content.length - 1; j >= 0; j--) {
-        if (message.content[j].type === 'text') {
-          message.content[j].cachePoint = {
-            type: 'default',
-          };
-          messagesModified++;
+        const block = message.content[j];
+        if (block && block.type === 'text') {
+          message.content.splice(j + 1, 0, { cachePoint: { type: 'default' } });
+          inserted = true;
           break;
         }
       }
+      if (!inserted) {
+        message.content.push({ cachePoint: { type: 'default' } });
+      }
+      messagesModified++;
     }
   }
 
