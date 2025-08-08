@@ -1,5 +1,4 @@
 const { addCacheControl } = require('./addCacheControl');
-const { addBedrockCacheControl } = require('./addBedrockCacheControl');
 const formatMessages = require('./formatMessages');
 const summaryPrompts = require('./summaryPrompts');
 const handleInputs = require('./handleInputs');
@@ -11,7 +10,6 @@ const createContextHandlers = require('./createContextHandlers');
 
 module.exports = {
   addCacheControl,
-  addBedrockCacheControl,
   ...formatMessages,
   ...summaryPrompts,
   ...handleInputs,

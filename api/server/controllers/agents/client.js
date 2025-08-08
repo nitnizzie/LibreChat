@@ -7,6 +7,7 @@ const {
   checkAccess,
   memoryInstructions,
   createMemoryProcessor,
+  addBedrockCacheControl,
 } = require('@librechat/api');
 const {
   Callback,
@@ -34,11 +35,7 @@ const {
 const { DynamicStructuredTool } = require('@langchain/core/tools');
 const { getBufferString, HumanMessage } = require('@langchain/core/messages');
 const { createGetMCPAuthMap, checkCapability } = require('~/server/services/Config');
-const {
-  addCacheControl,
-  addBedrockCacheControl,
-  createContextHandlers,
-} = require('~/app/clients/prompts');
+const { addCacheControl, createContextHandlers } = require('~/app/clients/prompts');
 const { initializeAgent } = require('~/server/services/Endpoints/agents/agent');
 const { spendTokens, spendStructuredTokens } = require('~/models/spendTokens');
 const { getFormattedMemories, deleteMemory, setMemory } = require('~/models');
